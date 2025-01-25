@@ -1,0 +1,23 @@
+<div class="todo">
+  <div class="container p-4 bg-light">
+    <div class="header text-center">
+      <h1 class="mb-4">To-Do App!</h1>
+      <p class="fw-bold">Add New To-Do</p>
+      <div class="add mb-5">
+        <input type="text" placeholder="Add task here" [(ngModel)]="taskTitle">
+        <button  class="btn btn-primary" (click)="addTask(taskTitle)">Add Task</button>
+      </div>
+      <div class="tasks">
+        @for (task of tasks; track $index) {
+          <div class="task">
+            <h4 class="title" [ngClass]="{'completed-task': task.isCompleted}">{{ task.title }} </h4>
+          <div class="btns">
+            <button class="btn btn-warning" (click)="completeTask(tasks.indexOf(task))">{{ task.isCompleted ? 'Undo' : 'Completed' }}</button>
+            <button class="btn btn-danger" (click)="deleteTask(tasks.indexOf(task))">Delete</button>
+          </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
